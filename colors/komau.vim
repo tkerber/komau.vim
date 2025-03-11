@@ -14,15 +14,15 @@ endif
 
 let g:colors_name='komau'
 
-let s:black           = {"gui": "#222222", "cterm": "235"}
-let s:medium_gray     = {"gui": "#767676", "cterm": "243"}
-let s:white           = {"gui": "#F5EEE6", "cterm": "255"}
-let s:light_black     = {"gui": "#424242", "cterm": "238"}
-let s:lighter_black   = {"gui": "#545454", "cterm": "240"}
-let s:subtle_black    = {"gui": "#303030", "cterm": "236"}
+let s:black           = {"gui": "#000000", "cterm": "0"}
+let s:medium_gray     = {"gui": "#808080", "cterm": "243"}
+let s:white           = {"gui": "#ffffff", "cterm": "15"}
+let s:light_black     = {"gui": "#222222", "cterm": "238"}
+let s:lighter_black   = {"gui": "#444444", "cterm": "240"}
+let s:subtle_black    = {"gui": "#111111", "cterm": "236"}
 let s:light_gray      = {"gui": "#999999", "cterm": "246"}
 let s:lighter_gray    = {"gui": "#CCCCCC", "cterm": "252"}
-let s:lightest_gray   = {"gui": "#E5E5E5", "cterm": "254"}
+let s:lightest_gray   = {"gui": "#eeeeee", "cterm": "254"}
 let s:yellow          = {"gui": "#FED442", "cterm": "221"}
 let s:pink            = {"gui": "#D73A49", "cterm": "167"}
 let s:green           = {"gui": "#22863A", "cterm": "29" }
@@ -32,23 +32,23 @@ let s:blue            = {"gui": "#005CC5", "cterm": "26" }
 
 let s:background = &background
 
-if &background == "dark"
-  let s:fg              = s:white
-  let s:bg              = s:black
-  let s:bg_subtle       = s:lighter_black
-  let s:bg_very_subtle  = s:subtle_black
-  let s:norm            = s:lighter_gray
-  let s:norm_subtle     = s:medium_gray
-  let s:cursorlinenr    = s:white
-else
+"if &background == "dark"
+"  let s:fg              = s:white
+"  let s:bg              = s:black
+"  let s:bg_subtle       = s:lighter_black
+"  let s:bg_very_subtle  = s:subtle_black
+"  let s:norm            = s:lighter_gray
+"  let s:norm_subtle     = s:medium_gray
+"  let s:cursorlinenr    = s:white
+"else
   let s:fg              = s:black
   let s:bg              = s:white
-  let s:bg_subtle       = s:light_gray
+  let s:bg_subtle       = s:lighter_gray
   let s:bg_very_subtle  = s:lightest_gray
   let s:norm            = s:light_black
-  let s:norm_subtle     = s:medium_gray
+  let s:norm_subtle     = s:lighter_black
   let s:cursorlinenr    = s:black
-endif
+"endif
 
 if has("gui_running")
     let s:terminal_italic=1 " TODO: could refactor to not require this at all
@@ -89,7 +89,7 @@ if &background != s:background
 endif
 
 call s:h("Cursor",        {"bg": s:light_black, "fg": s:norm })
-call s:h("Comment",       {"fg": s:bg_subtle, "gui": s:italic})
+call s:h("Comment",       {"fg": s:medium_gray, "gui": s:italic})
 
 call s:h("Constant",      {"fg": s:norm_subtle})
 hi! link Character        Constant
@@ -130,17 +130,17 @@ hi! link Debug            Special
 
 call s:h("Underlined",    {"fg": s:norm, "gui": "underline", "cterm": "underline"})
 call s:h("Ignore",        {"fg": s:bg})
-call s:h("Error",         {"fg": s:white, "bg": s:red, "cterm": s:bold})
+call s:h("Error",         {"fg": s:white, "bg": s:black, "cterm": s:bold})
 call s:h("Todo",          {"fg": s:pink, "gui": "underline", "cterm": "underline"})
-call s:h("SpecialKey",    {"fg": s:green})
+call s:h("SpecialKey",    {"fg": s:medium_gray})
 call s:h("NonText",       {"fg": s:medium_gray})
 call s:h("Directory",     {"fg": s:norm, "gui": s:bold, "cterm": s:bold})
-call s:h("ErrorMsg",      {"fg": s:red})
+call s:h("ErrorMsg",      {"fg": s:black, "gui": "underline", "cterm": "underline"})
 call s:h("IncSearch",     {"bg": s:norm_subtle, "fg": s:bg})
 call s:h("Search",        {"bg": s:norm, "fg": s:bg, "cterm": s:bold, "gui": s:bold})
 call s:h("MoreMsg",       {"fg": s:medium_gray, "cterm": s:bold, "gui": s:bold})
 hi! link ModeMsg MoreMsg
-call s:h("LineNr",        {"fg": s:bg_subtle})
+call s:h("LineNr",        {"fg": s:norm_subtle})
 call s:h("CursorLineNr",  {"fg": s:cursorlinenr, "bg": s:bg_very_subtle, "cterm": s:bold, "gui": s:bold})
 call s:h("Question",      {"fg": s:red})
 call s:h("StatusLine",    {"bg": s:bg_very_subtle})
@@ -148,16 +148,16 @@ call s:h("StatusLineNC",  {"bg": s:bg_very_subtle, "fg": s:medium_gray})
 call s:h("VertSplit",     {"bg": s:bg_very_subtle, "fg": s:bg_very_subtle})
 call s:h("Title",         {"fg": s:light_gray})
 call s:h("Visual",        {"fg": s:norm, "bg": s:bg_very_subtle})
-call s:h("VisualNOS",     {"bg": s:bg_subtle})
+call s:h("VisualNOS",     {"bg": s:norm_subtle})
 call s:h("WarningMsg",    {"fg": s:yellow})
 call s:h("WildMenu",      {"fg": s:bg, "bg": s:norm})
 call s:h("Folded",        {"fg": s:medium_gray})
-call s:h("FoldColumn",    {"fg": s:bg_subtle})
-call s:h("DiffAdd",       {"fg": s:green})
-call s:h("DiffDelete",    {"fg": s:red})
-call s:h("DiffChange",    {"fg": s:yellow})
-call s:h("DiffText",      {"fg": s:blue})
-call s:h("SignColumn",    {"fg": s:green})
+call s:h("FoldColumn",    {"fg": s:norm_subtle})
+call s:h("DiffAdd",       {"fg": s:norm})
+call s:h("DiffDelete",    {"fg": s:norm})
+call s:h("DiffChange",    {"fg": s:norm})
+call s:h("DiffText",      {"fg": s:norm})
+call s:h("SignColumn",    {"fg": s:norm})
 
 
 if has("gui_running")
