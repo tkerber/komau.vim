@@ -30,31 +30,16 @@ let s:red             = {"gui": "#B31D28", "cterm": "124"}
 let s:orange          = {"gui": "#E36209", "cterm": "166"}
 let s:blue            = {"gui": "#005CC5", "cterm": "26" }
 
-let s:background = &background
+let s:background = "light"
 
-"if &background == "dark"
-"  let s:fg              = s:white
-"  let s:bg              = s:black
-"  let s:bg_subtle       = s:lighter_black
-"  let s:bg_very_subtle  = s:subtle_black
-"  let s:norm            = s:lighter_gray
-"  let s:norm_subtle     = s:medium_gray
-"  let s:cursorlinenr    = s:white
-"else
-  let s:fg              = s:black
-  let s:bg              = s:white
-  let s:bg_subtle       = s:lighter_gray
-  let s:bg_very_subtle  = s:lightest_gray
-  let s:norm            = s:light_black
-  let s:norm_subtle     = s:lighter_black
-  let s:cursorlinenr    = s:black
-"endif
-
-if has("gui_running")
-    let s:terminal_italic=1 " TODO: could refactor to not require this at all
-else
-    let s:terminal_italic=0 " terminals will be guilty until proven compatible
-endif
+let s:fg              = s:black
+let s:bg              = s:white
+let s:bg_subtle       = s:lighter_gray
+let s:bg_very_subtle  = s:lightest_gray
+let s:norm            = s:black
+let s:norm_subtle     = s:light_black
+let s:norm_very_subtle = s:lighter_black
+let s:cursorlinenr    = s:black
 
 let g:komau_bold = get(g:, 'komau_bold', 1)
 let g:komau_italic = get(g:, 'komau_italic', 1)
@@ -226,14 +211,14 @@ hi link GitGutterChangeDelete       LineNr
 
 
 " Markdown
-call s:h("markdownCode", { "fg": s:bg_subtle })
-call s:h("markdownLinkReference", { "fg": s:bg_subtle })
-call s:h("markdownJekyllFrontMatter", { "fg": s:bg_subtle })
+call s:h("markdownCode", { "fg": s:norm_subtle })
+call s:h("markdownLinkReference", { "fg": s:norm_very_subtle })
+call s:h("markdownJekyllFrontMatter", { "fg": s:norm_very_subtle })
 call s:h("markdownCodeBlock", { "fg": s:norm })
 call s:h("markdownCodeDelimiter", { "fg": s:norm })
 call s:h("markdownHeadingDelimiter", { "fg": s:fg })
-call s:h("markdownRule", { "fg": s:bg_subtle })
-call s:h("markdownHeadingRule", { "fg": s:bg_subtle })
+call s:h("markdownRule", { "fg": s:norm_very_subtle })
+call s:h("markdownHeadingRule", { "fg": s:norm_very_subtle })
 call s:h("htmlH1", { "fg": s:fg, "gui": s:bold, "cterm": s:bold })
 call s:h("htmlH2", { "fg": s:fg, "gui": s:bold, "cterm": s:bold })
 call s:h("htmlH3", { "fg": s:fg, "gui": s:bold, "cterm": s:bold })
@@ -241,9 +226,9 @@ call s:h("htmlH4", { "fg": s:fg, "gui": s:bold, "cterm": s:bold })
 call s:h("htmlH5", { "fg": s:fg, "gui": s:bold, "cterm": s:bold })
 call s:h("htmlH6", { "fg": s:fg, "gui": s:bold, "cterm": s:bold })
 call s:h("mkdDelimiter", { "fg": s:fg })
-call s:h("markdownId", { "fg": s:light_gray })
-call s:h("markdownBlockquote", { "fg": s:bg_subtle })
-call s:h("markdownItalic", { "fg": s:light_gray, "gui": s:italic, "cterm": s:italic })
+call s:h("markdownId", { "fg": s:norm_subtle })
+call s:h("markdownBlockquote", { "fg": s:norm_very_subtle })
+call s:h("markdownItalic", { "fg": s:norm, "gui": s:italic, "cterm": s:italic })
 call s:h("mkdBold", { "fg": s:fg, "gui": s:bold, "cterm": s:bold })
 call s:h("mkdInlineURL", { "fg": s:fg, "gui": s:italic, "cterm": s:italic })
 call s:h("mkdListItem", { "fg": s:fg })
